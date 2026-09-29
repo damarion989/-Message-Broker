@@ -1,0 +1,3 @@
+Phase 1: A queue is best because messages are handled first-in, first-out, so older messages get processed before newer ones. A stack would reverse the order, making the newest message process first.
+Phase 2: Re-enqueuing failed messages at the back is fair because it gives other waiting messages a chance to process instead of letting one failed message block everything.
+Phase 3: A poison message enters the main queue like any other message. Each time it fails, its retry count increases and it goes to the back of the queue. Once it reaches 3 failures, it is moved out of the main queue and into the Dead-Letter Queue so it cannot keep clogging the system.
